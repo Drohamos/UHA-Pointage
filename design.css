@@ -1,0 +1,53 @@
+body {
+	margin: auto;
+	width: 95%;
+}
+
+#logo {
+	display: block;
+	text-align: center;
+}
+#logo img {
+	height: auto;
+	width: 100%;
+	max-width: 350px;
+}
+
+.slimForm {
+	border-radius: 8px;
+	max-width: 300px;
+	margin: auto;
+}
+.slimForm .slimForm_title {
+	border-bottom: 2px solid lightgray;
+	display: block;
+	font-size: 1.3em;
+	margin: 1em 0;
+}
+.center {
+	text-align: center;
+}
+
+.pure-form label, .slimForm input[type="submit"], .slimForm .pure-button {
+	margin: 1em 0 .4em;
+}
+
+/* pure-u-sm */
+@media screen and (min-width: 35.5em) {
+	body {
+		width: 80%;
+		max-width: 960px;
+	}
+}
+
+/* pure-u-md */
+@media screen and (min-width: 48em) {
+}
+
+/* pure-u-lg */
+@media screen and (min-width: 64em) {
+}
+
+/* pure-u-xl */
+@media screen and (min-width: 80em) {
+}
