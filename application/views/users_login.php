@@ -1,7 +1,7 @@
 <div class="center">
-	<?php echo validation_errors(); ?>
+	<?php if ($this->router->method == 'login') echo validation_errors(); ?>
 
-	<form action="" method="POST" class="pure-form pure-form-stacked slimForm">
+	<form action="/users/login" method="POST" class="pure-form pure-form-stacked slimForm">
 		<fieldset>
 				<?php echo userLabel('username', 'Nom d\'utilisateur'); ?>
 				<?php echo userInput('username', 'text', true);  ?>

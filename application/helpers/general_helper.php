@@ -1,19 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-// Définir les fonctions ici
-/*
-function registerInput($name, $type = 'text', $autofocus = false) {
-	$autofocus  = ($autofocus == true)? ' autofocus' : '';
-	$errorClass = (form_error('user['.$name.']') != null)? ' input-error' : '';
-
-	return '<input type="'.$type.'", name="user['.$name.']" id ="'.$name.'" class="pure-u-1'.$errorClass.'" value="'.set_value('user['.$name.']').'"'.$autofocus.'>';
-}
-
-function labelInput($id, $label) {
-	$errorClass = (form_error('user['.$name.']') != null)? ' input-error' : '';
-	return '<label for="'.$id.'" class="">'.$label.'</label>';
-}*/
-
 // Affiche label formulaire login/register
 function userLabel($id, $label) {
 	return form_label($label, 'user['.$id.']', array(
@@ -28,4 +14,15 @@ function userInput($name, $type = 'text', $autofocus = false) {
 // Salt + hash MD5
 function hashPass($password) {
 	return md5($password.'UFLOqcEqCrmnz0cBIMk7');
+}
+
+function redir($url) {
+	header('Location: '.$url);
+	exit();
+}
+
+function setFlashMessage($title, $type = 'info', $message = null) {
+	$CI =& get_instance();
+
+	$CI->session->set_flashdata('message', array('title' => $title, 'type' => $type, 'message' => $message));
 }

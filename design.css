@@ -8,6 +8,13 @@ body {
 	width: 100%;
 	max-width: 300px;
 }
+#userPanel {
+	background-color: #f0f0f0;
+	border: 1px solid #cdcdcd;
+	border-radius: 5px;
+	padding: 0.5em;
+	text-align: center;
+}
 
 header {
 	text-align: center;
@@ -33,6 +40,16 @@ h1 {
 .label-error {
 	color: red;
 }
+.message {
+	border: 1px solid;
+	border-width: 1px 1px 1px 3px;
+}
+.message.info {
+	border-color: blue;
+}
+.message.success {
+	border-color: green;
+}
 
 
 /**************/
@@ -49,6 +66,9 @@ h1 {
 
 /* pure-u-md */
 @media screen and (min-width: 48em) {
+	html {
+		font-size: 14pt;
+	}
 }
 
 /* pure-u-lg */

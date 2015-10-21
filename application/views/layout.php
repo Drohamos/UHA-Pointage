@@ -22,13 +22,23 @@
 			<h1><?php if (isset($title)) echo $title; ?></h1>
 		</header>
 
-		<section>
+		<?php if ($this->session->flashdata('message')): ?>
+		<div class="message <?php echo $_SESSION['message']['type'];  ?>">
+			<span class="title"><?php echo $_SESSION['message']['title']; ?></span>
+			<?php if ($_SESSION['message']['message']) echo $_SESSION['message']['message']; ?>
+		</div>
+		<?php endif; ?>
+
+		<section id="content">
 			<?php echo $content_for_layout; ?>
 		</section>
 
 		<footer>
 			<?php if (isset($_SESSION['user'])): ?>
-				<div id="userPanel"></div>
+				<div id="userPanel">
+					<strong><?php echo $_SESSION['user']['prenom'].' '.$_SESSION['user']['nom'];  ?></strong>
+					 - <a href="/users/logout">Déconnexion</a>
+				</div>
 			<?php endif; ?>
 		</footer>
 	</body>
