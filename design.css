@@ -3,14 +3,23 @@ body {
 	width: 95%;
 }
 
-#logo {
-	display: block;
-	text-align: center;
-}
 #logo img {
 	height: auto;
 	width: 100%;
-	max-width: 350px;
+	max-width: 300px;
+}
+
+header {
+	text-align: center;
+}
+h1 {
+	color: #4b4b4b;
+	font-size: 1.5em;
+	margin: 0.2em 0 1em;
+}
+
+.center {
+	text-align: center;
 }
 
 .slimForm {
@@ -18,19 +27,17 @@ body {
 	max-width: 300px;
 	margin: auto;
 }
-.slimForm .slimForm_title {
-	border-bottom: 2px solid lightgray;
-	display: block;
-	font-size: 1.3em;
-	margin: 1em 0;
-}
-.center {
-	text-align: center;
-}
-
 .pure-form label, .slimForm input[type="submit"], .slimForm .pure-button {
 	margin: 1em 0 .4em;
 }
+.label-error {
+	color: red;
+}
+
+
+/**************/
+/* RESPONSIVE */
+/**************/
 
 /* pure-u-sm */
 @media screen and (min-width: 35.5em) {
@@ -50,4 +57,12 @@ body {
 
 /* pure-u-xl */
 @media screen and (min-width: 80em) {
+}
+
+/****************************/
+/* OVERRIDES/ADDITIONS PURE */
+/****************************/
+
+.button-small {
+	font-size: 85%;
 }
