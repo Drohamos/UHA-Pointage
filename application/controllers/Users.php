@@ -62,18 +62,10 @@ class Users extends MY_Controller {
 
 		if ($this->form_validation->run()) {
 			$this->load->model('User_model');
-			$this->User_model->add($_POST['user']);
+			$this->User_model->create($_POST['user']);
 		}
 
 		$data['title'] = 'Inscription';
 		$this->layout->view('users_register', $data);
-
-		/*
-		 *    'prenom' => string '' (length=0)
-      'nom' => string '' (length=0)
-      'username' => string '' (length=0)
-      'password' => string '' (length=0)
-      'password_confirm' => string '' (length=0)
-		 */
 	}
 }

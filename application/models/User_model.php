@@ -6,7 +6,7 @@ class User_model extends CI_Model {
 		parent::__construct();
 	}
 
-	public function add($user) {
+	public function create($user) {
 		$this->db->insert('membres', array(
 			'username' => $user['username'],
 			'prenom'   => $user['prenom'],

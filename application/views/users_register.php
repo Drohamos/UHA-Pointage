@@ -21,5 +21,5 @@
 			<input type="submit" value="Inscription" class="pure-button pure-button-primary pure-u-2-3"><br />
 		</fieldset>
 	</form>
-	<a href="/"><button class="pure-button button-small">Connexion</button></a>
+	<a href="/"><button class="pure-button button-xsmall">Connexion</button></a>
 </div>
