@@ -27,7 +27,7 @@ class Users extends MY_Controller {
 
 		// Si formulaire validé -> vérif dans DB
 		if ($this->form_validation->run()) {
-			$query = $this->db->get_where('membres', array(
+			$query = $this->db->get_where('users', array(
 				'username' => $_POST['user']['username'],
 				'password' => hashPass($_POST['user']['password'])), 1);
 

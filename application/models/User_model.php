@@ -7,7 +7,7 @@ class User_model extends CI_Model {
 	}
 
 	public function create($user) {
-		$this->db->insert('membres', array(
+		$this->db->insert('users', array(
 			'username' => $user['username'],
 			'prenom'   => $user['prenom'],
 			'nom'	   => $user['nom'],

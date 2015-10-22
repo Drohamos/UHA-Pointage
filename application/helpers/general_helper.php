@@ -21,8 +21,10 @@ function redir($url) {
 	exit();
 }
 
-function setFlashMessage($title, $type = 'info', $message = null) {
+function setFlashMessage($title, $type = 'info', $redir = null, $message = null) {
 	$CI =& get_instance();
 
 	$CI->session->set_flashdata('message', array('title' => $title, 'type' => $type, 'message' => $message));
+
+	if ($redir) redir($redir);
 }
