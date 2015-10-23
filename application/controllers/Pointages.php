@@ -8,7 +8,7 @@ class Pointages extends MY_Controller {
 
 		// Récupération liste utilisateurs
 		$this->db->select('id, prenom, nom');
-		$data['users'] = $this->db->get('users', 1)->result_array();
+		$data['users'] = $this->db->get('users')->result_array();
 
 		// Composition de la requête sur pointage en fonction des segments reçus
 		if (array_key_exists('user', $data['uri']))

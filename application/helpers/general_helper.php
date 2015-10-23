@@ -7,8 +7,14 @@ function userLabel($id, $label) {
 	));
 }
 // Affiche label formulaire login/register
-function userInput($name, $type = 'text', $autofocus = false) {
-	return form_input('user['.$name.']', set_value('user['.$name.']'), array('id' => 'user['.$name.']', 'class' => 'pure-u-1'));
+function userInput($name, $type = 'text', $autofocus = false, $setValue = null) {
+	$data = array(
+		'type' => $type,
+		'name' => 'user['.$name.']',
+		'id' => 'user['.$name.']',
+		'class' => 'pure-u-1'
+	);
+	return form_input($data, set_value('user['.$name.']', $setValue), ($autofocus)? 'autofocus' : '');
 }
 
 // Salt + hash MD5

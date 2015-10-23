@@ -10,6 +10,7 @@ class Users extends MY_Controller {
 		// Sinon -> affichage form login
 		else {
 			$this->load->helper('form');
+			$this->load->helper('cookie');
 
 			$data['title'] = 'Connexion';
 			$this->layout->view('users_login', $data);
@@ -18,6 +19,7 @@ class Users extends MY_Controller {
 
 	public function login() {
 		$this->load->helper('form');
+		$this->load->helper('cookie');
 		$this->load->library('form_validation');
 
 		$this->form_validation->set_rules('user[username]', 'Nom d\'utilisateur', 'trim|required|min_length[1]');
@@ -31,6 +33,7 @@ class Users extends MY_Controller {
 
 			// Si utilisateur trouvé dans DB -> création session
 			if ($query->num_rows() == 1) {
+				set_cookie('username', $_POST['user']['username']);
 				$_SESSION['user'] = $query->row_array();
 				redir('/');
 			}
@@ -41,8 +44,11 @@ class Users extends MY_Controller {
 	}
 
 	public function logout() {
+		$this->load->helper('cookie');
+
 		if (isset($_SESSION['user'])) {
-			//unset($_SESSION['user']);
+
+			delete_cookie('username');
 			setFlashMessage('Vous êtes maintenant déconnecté', 'success');
 		}
 		redir('/');

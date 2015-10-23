@@ -4,7 +4,7 @@
 	<form action="/users/login" method="POST" class="pure-form pure-form-stacked slimForm">
 		<fieldset>
 				<?php echo userLabel('username', 'Nom d\'utilisateur'); ?>
-				<?php echo userInput('username', 'text', true);  ?>
+				<?php echo userInput('username', 'text', true, get_cookie('username'));  ?>
 
 				<?php echo userLabel('password', 'Mot de passe'); ?>
 				<?php echo userInput('password', 'password');  ?>
