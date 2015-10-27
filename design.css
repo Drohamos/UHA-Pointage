@@ -8,21 +8,8 @@ a {
 a:hover {
 	text-decoration: underline;
 }
-
-#logo img {
-	height: auto;
-	width: 100%;
-	max-width: 300px;
-}
-#userPanel {
-	background-color: #f0f0f0;
-	border: 1px solid #cdcdcd;
-	border-radius: 5px;
-	padding: 0.5em;
-	text-align: center;
-}
-#pointagesFilter ul {
-	padding-left: 20px;
+a:hover.pure-button {
+	text-decoration: none;
 }
 
 header {
@@ -38,6 +25,28 @@ footer {
 	margin-top: 1em;
 }
 
+
+#logo img {
+	height: auto;
+	width: 100%;
+	max-width: 300px;
+}
+#userPanel {
+	text-align: center;
+}
+#pointagesFilter ul {
+	padding-left: 20px;
+}
+#pointageSaver {
+	margin: auto;
+	max-width: 400px;
+	text-align: center;
+}
+#pointageSaver .pure-button {
+	margin: 0.5em 0;
+	width: 100%;
+}
+
 .center {
 	text-align: center;
 }
@@ -48,23 +57,36 @@ footer {
 	margin: auto;
 }
 .pure-form label, .slimForm input[type="submit"], .slimForm .pure-button {
-	margin: 1em 0 .4em;
+	margin: 1em 0 .3em;
 }
 .label-error {
 	color: red;
+	font-size: 80%;
+}
+.label-error p {
+	margin: 0;
 }
 .message {
 	border: 1px solid;
 	border-width: 1px 1px 1px 3px;
 	margin: 1em 0;
-	padding: 0.5em;
+	padding: 0 0.5em;
+}
+.message p {
+	margin: 0.6em 0 0.5em;
 }
 .message .title {
+	font-size: 110%;
 	font-weight: bold;
+	margin: 0.5em 0;
 }
 .message.error {
 	background-color: #ffe5e5;
 	border-color: red;
+}
+.message.warning {
+	background-color: #ffedcc;
+	border-color: orange;
 }
 .message.info {
 	background-color: #e5eeff;
@@ -74,7 +96,12 @@ footer {
 	background-color: #e5f2e5;
 	border-color: green;
 }
-
+.tiny p {
+	margin: 0;
+}
+.tiny {
+	font-size: 80%;
+}
 
 /**************/
 /* RESPONSIVE */
@@ -85,6 +112,10 @@ footer {
 	body {
 		width: 80%;
 		max-width: 960px;
+	}
+	#pointageSaver .pure-button {
+		margin: 0.5em auto;
+		width: 90%;
 	}
 }
 
@@ -107,10 +138,10 @@ footer {
 /* OVERRIDES/ADDITIONS PURE */
 /****************************/
 
-.button-small {
+.small {
 	font-size: 85%;
 }
 
-.button-xsmall {
+.xsmall {
 	font-size: 75%;
 }

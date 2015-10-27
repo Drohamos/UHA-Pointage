@@ -24,8 +24,8 @@
 
 		<?php if ($this->session->flashdata('message')): ?>
 		<div class="message <?php echo $_SESSION['message']['type'];  ?>">
-			<span class="title"><?php echo $_SESSION['message']['title']; ?></span>
-			<?php if ($_SESSION['message']['message']) echo $_SESSION['message']['message']; ?>
+			<p class="title"><?php echo $_SESSION['message']['title']; ?></p>
+			<?php if ($_SESSION['message']['message']) echo '<p>'.$_SESSION['message']['message'].'</p>'; ?>
 		</div>
 		<?php endif; ?>
 
@@ -37,7 +37,7 @@
 			<?php if (isset($_SESSION['user'])): ?>
 				<div id="userPanel">
 					<strong><?php echo $_SESSION['user']['prenom'].' '.$_SESSION['user']['nom'];  ?></strong>
-					 - <a href="/users/logout">Déconnexion</a>
+					 - <a href="/users/logout" class="pure-button xsmall">Déconnexion</a>
 				</div>
 			<?php endif; ?>
 		</footer>

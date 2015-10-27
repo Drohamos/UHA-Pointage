@@ -22,21 +22,37 @@ class Users extends MY_Controller {
 		$this->load->helper('cookie');
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('user[username]', 'Nom d\'utilisateur', 'trim|required|min_length[1]');
-		$this->form_validation->set_rules('user[password]', 'Mot de passe', 'trim|required|min_length[1]');
+		// Si username entré différent de cookie rappel -> suppr. cookie
+		if ($this->input->post('user[username]') && $this->input->post('user[username]') != get_cookie('username'))
+			delete_cookie('username');
+
+		// DEBUT VALIDATION
+		$this->form_validation->set_rules('user[username]', 'Nom d\'utilisateur', 'trim|required|exists[users.username]');
+		$this->form_validation->set_rules('user[password]', 'Mot de passe', 'trim|required');
+
+		$this->form_validation->set_message('required', 'Champ requis');
+		$this->form_validation->set_message('exists', 'Nom d\'utilisateur inconnu');
 
 		// Si formulaire validé -> vérif dans DB
 		if ($this->form_validation->run()) {
-			$query = $this->db->get_where('users', array(
+			$checkUser = $this->db->get_where('users', array(
 				'username' => $_POST['user']['username'],
 				'password' => hashPass($_POST['user']['password'])), 1);
 
-			// Si utilisateur trouvé dans DB -> création session
-			if ($query->num_rows() == 1) {
-				set_cookie('username', $_POST['user']['username']);
-				$_SESSION['user'] = $query->row_array();
-				redir('/');
+			// Si utilisateur/pw trouvé dans DB -> CREATION SESSION
+			if ($checkUser->num_rows() == 1) {
+				// On se rappelle de username pendant une semaine
+				set_cookie('username', $_POST['user']['username'], 604800);
+				$_SESSION['user'] = $checkUser->row_array();
+
+				setFlashMessage('Vous êtes connecté', 'success', '/');
 			}
+			// Echec login ? -> erreur et suppr. cookie username
+			else {
+				if (get_cookie('username')) delete_cookie('username');
+				setFlashMessage('Échec de la connexion', 'error', null, 'Mot de passe incorrect.');
+			}
+
 		}
 
 		$data['title'] = 'Connexion';
@@ -47,9 +63,9 @@ class Users extends MY_Controller {
 		$this->load->helper('cookie');
 
 		if (isset($_SESSION['user'])) {
-
 			delete_cookie('username');
-			setFlashMessage('Vous êtes maintenant déconnecté', 'success');
+			unset($_SESSION['user']);
+			setFlashMessage('Vous êtes déconnecté', 'success');
 		}
 		redir('/');
 	}
@@ -58,11 +74,15 @@ class Users extends MY_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('user[prenom]', 'Prénom', 'trim|required|min_length[1]');
-		$this->form_validation->set_rules('user[nom]', 'Nom', 'trim|required|min_length[1]');
-		$this->form_validation->set_rules('user[username]', 'Nom d\'utilisateur', 'trim|required|min_length[1]|is_unique[membres.username]');
-		$this->form_validation->set_rules('user[password]', 'Mot de passe', 'trim|required|min_length[1]');
-		$this->form_validation->set_rules('user[password_confirm]', 'Confirmation mot de passe', 'trim|required|min_length[1]|matches[user[password]]');
+		$this->form_validation->set_rules('user[prenom]', 'Prénom', 'trim|required');
+		$this->form_validation->set_rules('user[nom]', 'Nom', 'trim|required');
+		$this->form_validation->set_rules('user[username]', 'Nom d\'utilisateur', 'trim|required|is_unique[users.username]');
+		$this->form_validation->set_rules('user[password]', 'Mot de passe', 'trim|required');
+		$this->form_validation->set_rules('user[password_confirm]', 'Confirmation mot de passe', 'trim|required|matches[user[password]]');
+
+		$this->form_validation->set_message('required', 'Champ requis');
+		$this->form_validation->set_message('is_unique', 'Ce nom n\'est plus disponible');
+		$this->form_validation->set_message('matches', 'Doit être identique au mot de passe');
 
 		if ($this->form_validation->run()) {
 			$this->load->model('User_model');
