@@ -27,9 +27,17 @@ class Pointages extends MY_Controller {
 		$this->layout->view('pointages_index', $data);
 	}
 
-	public function add($tOD = null, $token = null) {
-		echo 'Time Of Day : '.$tOD;
+	public function add($tOD = NULL, $token = NULL) {
+		$this->output->enable_profiler(FALSE);
 
-		$pointagesJour = $this->db->get_where('pointages', array('user_id' => $_SESSION['user']['id'], 'date'));
+		// Contrôle du tOD
+		if (array_key_exists($tOD, $this->config->item('tODs'))) {
+			$this->load->model('Pointage_model');
+
+			if ($this->Pointage_model->addHour($tOD, $_SESSION['user']['id']))
+				setFlashMessage('Heure enregistrée', 'success', '/');
+			else setFlashMessage('Échec de l\'enregistrement', 'error', '/');
+		}
+		else setFlashMessage('tOD Invalide', 'warning', '/');
 	}
 }

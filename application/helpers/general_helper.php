@@ -30,11 +30,19 @@ function redir($url) {
 	exit();
 }
 
+function dateForDb() {
+	return date('Y-m-d');
+}
+function timeForDb() {
+	return date('H:i:s');
+}
+
+// Création message flash, avec redir. si nécessaire
 function setFlashMessage($title, $type = 'info', $redir = null, $message = null, $keepMessage = true) {
 	$CI =& get_instance();
 
 	$CI->session->set_flashdata('message', array('title' => $title, 'type' => $type, 'message' => $message));
-	if ($keepMessage == false) $CI->session->mark_flashdata('message');
+	//if ($keepMessage == false) $CI->session->mark_flashdata('message');
 
 	if ($redir) redir($redir);
 }

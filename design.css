@@ -46,6 +46,10 @@ footer {
 	margin: 0.5em 0;
 	width: 100%;
 }
+#pointageSaver button {
+	cursor: default;
+	opacity: 1;
+}
 
 .center {
 	text-align: center;
@@ -116,6 +120,9 @@ footer {
 	#pointageSaver .pure-button {
 		margin: 0.5em auto;
 		width: 90%;
+	}
+	#pointageSaver button {
+		font-size: 75%;
 	}
 }
 

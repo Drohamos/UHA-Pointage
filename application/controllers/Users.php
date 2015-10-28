@@ -4,6 +4,10 @@ class Users extends MY_Controller {
 	public function index() {
 		// Utilisateur connecté -> fonctionnement normal
 		if (isset($_SESSION['user'])) {
+			$data['pointagesJour'] = $this->db->get_where(
+				'pointages', array('user_id' => $_SESSION['user']['id'],
+				'date' => dateForDb()), 1)->row_array();
+
 			$data['title'] = 'Index utilisateur';
 			$this->layout->view('users_index', $data);
 		}
@@ -47,10 +51,10 @@ class Users extends MY_Controller {
 
 				setFlashMessage('Vous êtes connecté', 'success', '/');
 			}
-			// Echec login ? -> erreur et suppr. cookie username
+			// Echec login ? -> msg erreur et suppr. cookie username
 			else {
 				if (get_cookie('username')) delete_cookie('username');
-				setFlashMessage('Échec de la connexion', 'error', null, 'Mot de passe incorrect.');
+				setFlashMessage('Échec de la connexion', 'error', null, 'Mot de passe incorrect.', false);
 			}
 
 		}
