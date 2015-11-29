@@ -40,13 +40,12 @@ footer {
 #pointageSaver {
 	margin: auto;
 	max-width: 400px;
-	text-align: center;
 }
 #pointageSaver .pure-button {
 	margin: 0.5em 0;
 	width: 100%;
 }
-#pointageSaver button {
+#pointageSaver .pure-button-disabled {
 	cursor: default;
 	opacity: 1;
 }
@@ -107,6 +106,10 @@ footer {
 	font-size: 80%;
 }
 
+.weekCalendar {
+	width: 100%;
+}
+
 /**************/
 /* RESPONSIVE */
 /**************/
@@ -121,15 +124,15 @@ footer {
 		margin: 0.5em auto;
 		width: 90%;
 	}
-	#pointageSaver button {
-		font-size: 75%;
-	}
 }
 
 /* pure-u-md */
 @media screen and (min-width: 48em) {
 	html {
 		font-size: 14pt;
+	}
+	#pointageSaver .pure-button-disabled {
+		font-size: 75%;
 	}
 }
 

@@ -1,6 +1,6 @@
 <a href="/pointages">Liste pointage</a>
 
-<div id="pointageSaver" class="pure-g">
+<div id="pointageSaver" class="pure-g center">
 	<?php foreach($this->config->item('tODs') AS $tOD => $label): ?>
 	<div class="pure-u-1 pure-usm-1-2">
 		<?php if ($pointagesJour[$tOD] == NULL): ?>
@@ -11,6 +11,8 @@
 	</div>
 	<?php endforeach; ?>
 </div>
+
+<p class="center small">Temps du serveur : <?php echo date('d/m/Y H:i'); ?></p>
 
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript">

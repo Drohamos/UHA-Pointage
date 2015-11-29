@@ -24,6 +24,29 @@
 	</div>
 </div>
 
-<?php var_dump($pointages); ?>
-
-<?php var_dump($uri); ?>
+<table class="weekCalendar">
+	<tr>
+		<th></th>
+		<th>Lundi 2</th>
+		<th>Mardi 3</th>
+		<th>Mercredi 4</th>
+		<th>Jeudi 5</th>
+		<th>Vendredi 6</th>
+	</tr>
+	<tr>
+		<th>Robin Barkas</th>
+		<td>9h -> 12h<br />13h -> 17h</td>
+		<td>9h -> 12h<br />13h -> 17h</td>
+		<td>9h -> 12h<br />13h -> 17h</td>
+		<td>9h -> 12h<br />13h -> 17h</td>
+		<td>9h -> 12h<br />13h -> 17h</td>
+	</tr>
+	<tr>
+		<th>Admin Istrateur</th>
+		<td>9h -> 12h<br />13h -> 17h</td>
+		<td>9h -> 12h<br />13h -> 17h</td>
+		<td>9h -> 12h<br />13h -> 17h</td>
+		<td>9h -> 12h<br />13h -> 17h</td>
+		<td>9h -> 12h<br />13h -> 17h</td>
+	</tr>
+</table>

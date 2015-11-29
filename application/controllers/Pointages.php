@@ -23,6 +23,8 @@ class Pointages extends MY_Controller {
 
 		$data['pointages'] = $this->db->join('users', 'users.id = pointages.user_id')->get('pointages')->result_array();
 
+		$this->load->library('calendar');
+
 		$data['title'] = 'Liste pointage';
 		$this->layout->view('pointages_index', $data);
 	}
